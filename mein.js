@@ -1,3 +1,23 @@
+const app = new Vue({
+  el: "#app",
+  data: {
+    message: "Hallo, World",
+    categories: ["Name", "Party", "State", "Votes with party %"]
+  },
+  template: "<input placeholder='{{message}}'></input>",
+  created: function() {
+    this.$http
+      .get("https://api.propublica.org/congress/v1/113/senate/members.json", {
+        headers: {
+          "X-API-Key": "ZERZB6sQwFt0IQHJ9NIklUwqQMuPYsW6yBT8Fk4X"
+        }
+      })
+      .then(function(responce) {
+        console.log(responce.data.status);
+      });
+  }
+});
+
 // const year = 365;
 // const month = 12;
 // const day = 24;
@@ -20,8 +40,6 @@
 // }
 
 // console.log(my_bilyon_seconds_birthday(1984.5));
-
-// const numb = [3,6,67,6,23,11,100,8,93,0,17,24,7,1,33,45,28,33,23,12,99,100];
 
 // const duble_num = (arr) => {
 //     let num_arr_was = [];
@@ -92,7 +110,7 @@
 //     return weird_sentece
 // }
 
-const numbers = [1, 2, 3, -20, 4, 5, -3, 6, 7, 8, 100, 9];
+// const numbers = [1, 2, 3, -20, 4, 5, -3, 6, 7, 8, 100, 9];
 
 //  const sum_arr = (arr)=>{
 //     const sum = numbers.reduce((a,b) => a+b, 0);
@@ -119,20 +137,17 @@ const numbers = [1, 2, 3, -20, 4, 5, -3, 6, 7, 8, 100, 9];
 //     return even_adds
 // }
 
+// const adds_numbers_between = (a, b) => {
+//     for (let i = a; i <= b; i++) {
+//         if (i % 2 == 0) {
+//             continue;
+//         } else {
+//             document.write(i);
+//             document.write(", ");
+//         }
+//     }
+// };
 
-
-
-const adds_numbers_between = (a, b) => {
-    for (let i = a; i <= b; i++) {
-        if (i % 2 == 0) {
-            continue;
-        } else {
-            document.write(i);
-            document.write(", ");
-        }
-    }
-};
-
-adds_numbers_between(1, 13);
+// adds_numbers_between(1, 13);
 
 // console.log(sum_arr(numbers));
